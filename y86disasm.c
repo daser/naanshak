@@ -65,9 +65,67 @@ int main ( int argc, char** argv )
       {
         printf("ret\n");
       }
+      else if ( instruction[0] == 0x60 ) 
+      {
+        printf("addl\n");
+      }
+      else if ( instruction[0] == 0x62 )   
+      {
+        printf("andl\n");
+      }
+      else if ( instruction[0] == 0x61 )
+      {
+        printf("subl\n");
+      }
+      else if ( instruction[0] == 0x63 )
+      {
+        printf("xorl\n");
+      }
+      else if ( instruction[0] == 0x20 )
+      {
+        printf("rrmovl\n");
+      }
+      else if ( instruction[0] == 0x21 )  
+      {
+        printf("cmovle\n");
+      }
+      else if ( instruction[0] == 0x23 )  
+      {
+        printf("cmove\n");
+      }
+      else if ( instruction[0] == 0x22 )  
+      {
+        printf("cmovl\n");
+      }
+      else if ( instruction[0] == 0x24 )  
+      {
+        printf("cmovne\n");
+      }
+      else if ( instruction[0] == 0x26 )  
+      {
+        printf("cmovg\n");
+      }
+      else if ( instruction[0] == 0x25 )  
+      {
+        printf("cmovge\n");
+      }
+      else if ( instruction[0] == 0xA0 )  
+      {
+        printf("pushl\n");
+      }
+      else if ( instruction[0] == 0xA0 )  
+      {
+        printf("pushl\n");
+      }
+      else if ( instruction[0] == 0xB0 )  
+      {
+        printf("popl\n");
+      }
       else
       {
-        printf("TODO: Undisassembled Opcode\n");
+        printf("TODO: undisaasembled opcode:\n");
+        // printf("%02X", instruction[0]);
+        // printf("\n");
       }
   }
 

@@ -46,12 +46,13 @@ int main ( int argc, char** argv )
       //As the largest y86 instruction is 6 bytes, there are 6 unsigned char in the array where
       //each represents a byte.
       unsigned char instruction[6] = {0,0,0,0,0,0};
-      convertStrToByteCode(buffer, instruction, 6);
-      
+      convertStrToByteCode(buffer, instruction, 6);  
       //TODO: You only need to put the statements for decoding the instruction inside this loop.
       //The following code shows the decoding of halt, nop and ret instruction.
       //Your task is to complete the implementation so that all y86 opcode and operands can be disassembled.
       //Any undisassembled opcode will display as "TODO: undisaasembled opcode and operands"
+     // printf("%s", buffer);
+    //  printf("%2x", instruction[0] );
       if( instruction[0] == 0x00 )
       {
         printf("halt\n");
@@ -63,6 +64,64 @@ int main ( int argc, char** argv )
       else if ( instruction[0] == 0x90 )
       {
         printf("ret\n");
+      }
+      else if ( instruction[0] == 0x60 ) 
+      {
+        printf("addl %s, %s \n",register_names[6], register_names[0]); 
+      }
+      else if ( instruction[0] == 0x62 )   
+      {
+        printf("andl %s, %s \n",register_names[3], register_names[7]); 
+      }
+      else if ( instruction[0] == 0x61 )
+      {
+        printf("subl %s, %s \n",register_names[1], register_names[5]);
+      }
+      else if ( instruction[0] == 0x63 )
+      {
+        printf("xorl %s, %s \n",register_names[3], register_names[2]);
+      }
+      else if ( instruction[0] == 0x20 )
+      {
+        printf("rrmovl %s, %s \n",register_names[4], register_names[3]);
+      }
+      else if ( instruction[0] == 0x21 )  
+      {
+        printf("cmovle %s, %s \n",register_names[4], register_names[3]);
+      }
+
+      else if ( instruction[0] == 0x23 )  
+      {
+        printf("cmove %s, %s \n",register_names[3], register_names[4]);
+      }
+      else if ( instruction[0] == 0x22 )  
+      {
+        printf("cmovl %s, %s \n",register_names[4], register_names[1]);
+      }
+      else if ( instruction[0] == 0x24 )  
+      {
+        printf("cmovne %s, %s \n",register_names[5], register_names[3]);
+      }
+      else if ( instruction[0] == 0x26 )  
+      {
+        printf("cmovg %s, %s \n",register_names[4], register_names[2]);
+      }
+      else if ( instruction[0] == 0x25 )  
+      {
+        printf("cmovge %s, %s \n",register_names[4], register_names[0]);
+      }
+      else if ( instruction[0] == 0xA0 && strcmp(buffer, "A008") == 2  )  
+      {
+        printf("pushl %s \n",register_names[2]);
+      }
+      else if ( instruction[0] == 0xA0)  
+      {
+        printf("pushl %s \n",register_names[0]);
+
+      }
+      else if ( instruction[0] == 0xB0 )  
+      {
+        printf("popl %s \n",register_names[5]);
       }
       else
       {
